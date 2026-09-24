@@ -1,4 +1,4 @@
-process process calculatePGS {
+process calculatePGS {
     // No publish/storeDir since pgsc_calc itself can output to an accesible location (check --outidr), easier to handle chunk_id than passing a directory between processes
     input:
         tuple(

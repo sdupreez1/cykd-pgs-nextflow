@@ -1,4 +1,4 @@
-process process formatHarmonisedOPGS {
+process formatHarmonisedOPGS {
     publishDir { "outputs/OPGS_traits/${platform}/" }, mode: 'copy', pattern: "*to*_traits.tsv"
 
     input:

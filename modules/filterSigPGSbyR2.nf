@@ -1,4 +1,4 @@
-process process filterSigPGSbyR2 {
+process filterSigPGSbyR2 {
     publishDir 'outputs/comparison_results/', mode: 'copy'
 
     input:

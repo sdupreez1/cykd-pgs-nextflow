@@ -1,4 +1,4 @@
-process process finalCohortStats {
+process finalCohortStats {
     storeDir 'outputs/cohort/final_cohort'
 
     input:
