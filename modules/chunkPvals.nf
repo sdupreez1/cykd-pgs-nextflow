@@ -1,4 +1,4 @@
-process process chunkPvals {
+process chunkPvals {
     publishDir { "outputs/comparison_results/pvals/${platform}/" }, mode: 'copy'
 
     input:
@@ -19,21 +19,5 @@ process process chunkPvals {
         """
         module load R/4.5.2
         compare_case_and_control_pgs_scores.R ${platform} ${chunk_id} ${projectDir}
-        """
-}
-
-process platformFDRandPlotting {
-    publishDir { "outputs/comparison_results/stats_and_figures/${platform}" }, mode: 'copy'
-
-    input:
-        tuple val(platform), path(platform_pvals, stageAs: "platform_pvals/*")
-    
-    output:
-        path "${platform}_significant_pgs.tsv", emit: sig_pgs
-
-    script:
-        """
-        module load R/4.5.2
-        platform_fdrs.R ${platform} ${projectDir}
         """
 }

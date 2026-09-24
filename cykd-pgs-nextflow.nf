@@ -5,7 +5,8 @@ include { getLowMAFGenomicData } from './modules/getLowMAFGenomicData.nf'
 include { finalCohortStats } from './modules/finalCohortStats.nf'
 include { formatHarmonisedOPGS } from './modules/formatHarmonisedOPGS.nf'
 include { calculatePGS; getRefPanelPlatekeys } from './modules/calculatePGS.nf'
-include { chunkPvals; platformFDRandPlotting } from './modules/comparePGS.nf'
+include { chunkPvals } from './modules/chunkPvals.nf'
+include { platformFDR } from './modules/platformFDR.nf'
 include { filterSigPGSbyR2 } from './modules/filterSigPGSbyR2.nf'
 
 workflow {
@@ -77,7 +78,7 @@ workflow {
         | combine(finalCohortStats.out.platekey_sex_age)
         | chunkPvals    // Outputs tuple val("${platform}"), path("${chunk_id}_pvals.tsv")
         | groupTuple    // Groups chunkPvals outputs by platform
-        | platformFDRandPlotting
+        | platformFDR
    
     filterSigPGSbyR2(platformFDRandPlotting.out.sig_pgs.collect())
 }
