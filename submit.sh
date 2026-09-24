@@ -85,6 +85,7 @@ fi
 command+=" nextflow run ${project_name}.nf"
 $resume && command+=" -resume"
 
+mkdir -p ${root_dir}/misc/pgsc_calc
 if [[ ! -e ${root_dir}/misc/pgsc_calc/pgsc_calc_container.sif ]]; then
    echo "Downloading pgsc_calc sif image to ${root_dir}/misc/pgsc_calc..."
    module load singularity/4.1.1
