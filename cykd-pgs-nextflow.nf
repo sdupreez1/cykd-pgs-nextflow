@@ -80,5 +80,5 @@ workflow {
         | groupTuple    // Groups chunkPvals outputs by platform
         | platformFDR
    
-    filterSigPGSbyR2(platformFDRandPlotting.out.sig_pgs.collect())
+    filterSigPGSbyR2(platformFDR.out.sig_pgs.collect())
 }
